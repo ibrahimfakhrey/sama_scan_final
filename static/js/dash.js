@@ -125,61 +125,61 @@ var demo = function() {
         right: 'month'
       },
       height: 600,
-      defaultDate: '2016-09-12',
+      defaultDate: '2023-08-17',
       defaultView: 'month',
       editable: true,
       events: [{
         id: 1,
         title: 'Repeating Event',
-        start: '2016-09-09',
+        start: '2023-08-17',
         color: 'yellow'
       }, {
         id: 2,
         title: 'DCM Event',
-        start: '2016-09-16'
+        start: '22023-08-17'
       }, {
         id: 3,
-        title: 'Another Event',
-        start: '2016-09-05',
+        title: 'ميغابلالايبt',
+        start: '2023-08-20',
         color: 'green'
       }]
     });
-   
+
   };
-  var toggleChart = function() {
-    var ctx = $('#myChart');
-    var myChart = new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
-        }]
-      },
-      options: {
-        responsive: true,
-        scales: {
-          yAxes: [{
-            scaleLabel: {
-              display: true,
-              labelString: 'Votes'
-            },
-            ticks: {
-              beginAtZero: true,
-            }
-          }],
-          xAxes: [{
-            scaleLabel:{
-              display:true,
-              labelString: 'Days(s)'
-            }
-          }]
-        }
-      }
-    });
-  };
+//  var toggleChart = function() {
+//    var ctx = $('#myChart');
+//    var myChart = new Chart(ctx, {
+//      type: 'line',
+//      data: {
+//        labels: ["sat","sun","mon","tud","wed","thr","frid"],
+//        datasets: [{
+//          label: '# of thisngs',
+//          data: [1,3,2,7,5,6,7],
+//          borderWidth: 1
+//        }]
+//      },
+//      options: {
+//        responsive: true,
+//        scales: {
+//          yAxes: [{
+//            scaleLabel: {
+//              display: true,
+//              labelString: 'height'
+//            },
+//            ticks: {
+//              beginAtZero: true,
+//            }
+//          }],
+//          xAxes: [{
+//            scaleLabel:{
+//              display:true,
+//              labelString: 'Days(s)'
+//            }
+//          }]
+//        }
+//      }
+//    });
+//  };
   var goFullScreen = function() {
     $(".goFullScreen").click(function(e) {
       e.preventDefault();

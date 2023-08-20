@@ -1,3 +1,5 @@
+import json
+
 from flask import Flask, render_template, redirect, url_for, flash, abort, request, jsonify
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
@@ -42,6 +44,18 @@ with app.app_context():
         notes = db.Column(db.String(1000))
         phone=db.Column(db.String(100))
 
+
+    class News(UserMixin, db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        title = db.Column(db.String(100))
+        des = db.Column(db.String(1000))
+
+    class Discounts(UserMixin, db.Model):
+        id = db.Column(db.Integer, primary_key=True)
+        name = db.Column(db.String(100))
+        des = db.Column(db.String(1000))
+
+
     db.create_all()
 
 class MyModelView(ModelView):
@@ -52,6 +66,8 @@ class MyModelView(ModelView):
 admin = Admin(app)
 admin.add_view(MyModelView(Paid_user, db.session))
 admin.add_view(MyModelView(Results, db.session))
+admin.add_view(MyModelView(News, db.session))
+admin.add_view(MyModelView(Discounts, db.session))
 
 
 
@@ -101,13 +117,24 @@ def login():
             login_user(user)
 
 
-            return "hi"
+            return redirect("/dash")
     return render_template("login.html")
 
 @app.route("/dash")
 def dash():
-    username=current_user.name
+    user=current_user
+    username=user.name
+
     items=Results.query.all()
-    return render_template("dash.html",user_name=username,items=items)
+    results=[]
+    for i in items:
+        if i.phone==user.phone:
+            results.append(i)
+    y = [10, 50, 30, 40, 50]
+    x = ["urin1", "urin2", "urin3", "urin4", "urin5"]
+    news=News.query.all()
+    discounts=Discounts.query.all()
+
+    return render_template("dash.html", user_name=username, items=results, labels=x, data=y,news=news,discounts=discounts)
 if __name__=="__main__":
     app.run(debug=True)

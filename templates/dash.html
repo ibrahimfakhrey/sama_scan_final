@@ -123,7 +123,7 @@
                     <a class="accordion-toggle btn btn-secondary openCard" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><i class="fa fa-minus"></i></a>
                     <a href="#" class=" goFullScreen btn btn-default btn-xs"><i class="fa fa-expand"></i></a>
                   </div>
-                  <h1 class="card-title text-center">Model</h1>
+                  <h1 class="card-title text-center">statistics</h1>
                 </div>
                 <div class="card-block">
                   <div id="collapseTwo" class="card-collapse collapse in">
@@ -138,70 +138,41 @@
             <div class="col-lg-3">
               <div id="actionsCard" class="card">
                 <div class="card-header text-xs-center">
-                  <h1>Log</h1>
+                  <h1>latest News</h1>
                 </div>
                 <div class="card-block text-s-center">
                   <div class="ui list" id="actions">
+                    {% for n in news %}
                     <div class="item">
                       <i class="map marker icon"></i>
                       <div class="content">
-                        <h4 class="header">Chris Muzzin</h4>
-                        <div class="description"> Pushed bad code and broke everything we strive not to do</div>
+                        <h4 class="header">{{n.title}}</h4>
+                        <div class="description"> {{ n.des}}</div>
                       </div>
                     </div>
-                    <div class="item">
-                      <i class="map marker icon"></i>
-                      <div class="content">
-                        <h4 class="header">Red Rover</h4>
-                        <div class="description">Deleted all the useful files and set us back months on this project</div>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="map marker icon"></i>
-                      <div class="content">
-                        <h4 class="header">James Bond</h4>
-                        <div class="description">Assassinated the Goldfinger and saved the world once again</div>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="map marker icon"></i>
-                      <div class="content">
-                        <h4 class="header">Yoda</h4>
-                        <div class="description">Yolo swagged on some clone troopers after they tried to kill him during order 66</div>
-                      </div>
-                    </div>
+                    {% endfor %}
+
                   </div>
                   <div class="ui relaxed divided list" id="alerts">
+                    {% for i in discounts %}
                     <div class="item">
                       <i class=" large info icon aligned icon"></i>
                       <div class="content">
-                        <a class="header">Someone did Something</a>
-                        <div class="description">Updated 10 mins ago</div>
+                        <a class="header">{{i.name}}</a>
+                        <div class="description">{{i.des}}</div>
                       </div>
                     </div>
-                    <div class="item">
-                      <i class="large info icon aligned icon"></i>
-                      <div class="content">
-                        <a class="header">Something Else </a>
-                        <div class="description">Updated 22 mins ago</div>
-                      </div>
-                    </div>
-                    <div class="item">
-                      <i class="large info icon aligned icon"></i>
-                      <div class="content">
-                        <a class="header">Chris did this </a>
-                        <div class="description">Updated 34 mins ago</div>
-                      </div>
-                    </div>
+                    {% endfor %}
+
                   </div>
                 </div>
                 <div class="card-footer text-center">
                   <ul class="nav nav-pills card-header-pills center-pills">
                     <li class="nav-item">
-                      <a class="nav-link active" id="actionsLink">Actions</a>
+                      <a class="nav-link active" id="actionsLink">اخر الاخبار </a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="alertsLink">Alerts</a>
+                      <a class="nav-link" id="alertsLink">الخصومات</a>
                     </li>
                   </ul>
                 </div>
@@ -241,7 +212,42 @@
                   <!-- page content wrapper -->
                 </div>
                 <!-- main -->
-
+<script>
+     var toggleChart = function() {
+  var ctx = $('#myChart');
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: {{ labels|tojson }},
+      datasets: [{
+        label: '# of things',
+        data: {{ data|tojson }},
+        borderWidth: 1
+      }]
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [{
+          scaleLabel: {
+            display: true,
+            labelString: 'height'
+          },
+          ticks: {
+            beginAtZero: true,
+          }
+        }],
+        xAxes: [{
+          scaleLabel:{
+            display:true,
+            labelString: 'Day(s)'
+          }
+        }]
+      }
+    }
+  });
+};
+    </script>
 </body>
 <!-- partial -->
   <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js'></script>
