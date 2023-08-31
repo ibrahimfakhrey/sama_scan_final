@@ -57,8 +57,8 @@
 <!--    </nav>-->
 <!--  </div>-->
 
-  
-  
+
+
   <div id="main">
     <div class="page-content-wrapper">
       <div class="container-fluid">
@@ -90,54 +90,12 @@
                   </div>
                   <div id="collapseOne" class="card-collapse collapse in">
                     <div class="card-block">
-                      <table class="table">
-                        <thead class="thead-inverse">
-                          <tr>
-                            <th>#</th>
-                            <th> Name</th>
-                            <th>case</th>
-                            <th>Notes</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        {% for item in items %}
-                          <tr>
-                            <th scope="row">{{ loop.index}}</th>
-                            <td>{{ item.name }}</td>
-                            <td>{{ item.case}}</td>
-                            <td>{{ item.notes}}</td>
-                          </tr>
-                        {%endfor%}
-
-                        </tbody>
-                      </table>
+                      <h1>{{name}}</h1>
+                        <img src="../static/uploads/{{file}}" alt="" style="width:100px;">
+                        <p>{{notes}}</p>
                     </div>
                   </div>
-                  <div id="collapseOne" class="card-collapse collapse in">
-                    <div class="card-block">
-                      <table class="table">
-                        <thead class="thead-inverse">
-                          <tr>
-                            <th>#</th>
-                            <th> Name</th>
-                            <th>case</th>
-                            <th>Notes</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                        {% for item in done %}
-                          <tr>
-                            <th scope="row">{{ loop.index}}</th>
-        <td><a href="{{ url_for('show_item', id=item.id) }}">{{ item.name }}</a></td>
-                             <td>{{ item.case}}</td>
-                            <td>{{ item.notes}}</td>
-                          </tr>
-                        {%endfor%}
 
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
@@ -221,7 +179,7 @@
 
                       <div class="calendarOne" id="calendarOne"></div>
 
-                      <!--                     
+                      <!--
                       </div>
                     </div>
                   </div>
