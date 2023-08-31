@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>SAMA Scan</title>
+  <link rel="stylesheet" href="../static/css/register.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="form_wrapper">
+	<div class="form_container">
+		<div class="title_container">
+			<h2>adding result</h2>
+		</div>
+		<div class="row clearfix">
+			<div class="">
+
+				<form id='register-form' action="{{ url_for('add_result')}}" method="post" enctype="multipart/form-data">
+
+
+<div class="input_field">
+
+								<input type="text" name="name" placeholder="name of the analysis" required />
+							</div>
+							<div class="input_field">
+
+								<input type="text" name="phone" placeholder="phone number" required />
+							</div>
+
+<div class="input_field">
+
+								<input type="text" name="case" placeholder="write here done or not" required />
+							</div>
+					<div class="input_field">
+
+								<input type="text" name="notes" placeholder="name of the analysis" required />
+							</div>
+	<div class="input_field">
+								 <input type="file" name="profile_photo">
+  <button type="submit">Upload</button>
+							</div>
+
+
+
+
+
+ <input id='submit-data' class="button" type="submit" value="Register" />
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<p class="credit">Developed by <a href="http://www.designtheway.com" target="_blank">Design the way</a></p>
+<!-- partial -->
+  <script src='https://use.fontawesome.com/723b3db6c5.js'></script><script  src="../static/js/register.js"></script>
+
+</body>
+</html>
